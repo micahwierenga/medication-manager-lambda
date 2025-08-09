@@ -1,0 +1,34 @@
+{
+  "version": "45.0.0",
+  "files": {
+    "0637cc9465e4e562aabb6f53634f3f1dfff86ed34d19ac0a502e7d7ec16955d0": {
+      "displayName": "MultiTableLambda/Code",
+      "source": {
+        "path": "asset.0637cc9465e4e562aabb6f53634f3f1dfff86ed34d19ac0a502e7d7ec16955d0",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-current_region-6185d863": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "0637cc9465e4e562aabb6f53634f3f1dfff86ed34d19ac0a502e7d7ec16955d0.zip",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    },
+    "2bfa3c09572723c827d96333e5d3942609cb4e65bc9fbae7c5d44d65753cccac": {
+      "displayName": "MultiTableApiStack Template",
+      "source": {
+        "path": "MultiTableApiStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-999b07a9": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "2bfa3c09572723c827d96333e5d3942609cb4e65bc9fbae7c5d44d65753cccac.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
