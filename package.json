@@ -1,24 +1,26 @@
 {
-  "name": "lambda-function",
+  "name": "add-patient-cdk-app",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "AWS CDK app for patient, medication, and schedule management",
+  "main": "bin/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@types/aws-lambda": "^8.10.152",
-    "@types/node": "^24.1.0",
-    "@types/uuid": "^10.0.0",
-    "typescript": "^5.8.3"
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "synth": "cdk synth",
+    "deploy": "cdk deploy",
+    "destroy": "cdk destroy",
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.856.0",
-    "@aws-sdk/lib-dynamodb": "^3.856.0",
-    "uuid": "^11.1.0"
+    "aws-cdk-lib": "^2.0.0",
+    "constructs": "^10.0.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "@types/uuid": "^9.0.0",
+    "@types/aws-lambda": "^8.10.0"
   }
 }
