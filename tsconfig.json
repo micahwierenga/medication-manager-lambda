@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "dist",
     "rootDir": ".",
@@ -10,7 +10,10 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": ["node", "aws-lambda"]
+    "types": ["node", "aws-lambda"],
+    "allowSyntheticDefaultImports": true,
+    "noEmitHelpers": false,
+    "importHelpers": false
   },
   "include": [
     "bin/**/*.ts",

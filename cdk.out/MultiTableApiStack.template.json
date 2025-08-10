@@ -205,7 +205,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "3aeaa7f259d83bc5c978251f461be95a9017ba8344a15d1f63992ccec0928082.zip"
+     "S3Key": "5d5d53c3a913262eebe9bf75facc87c5fd882e2369942875b8e0f5c62fdaa7dd.zip"
     },
     "Environment": {
      "Variables": {
@@ -236,7 +236,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "MultiTableApiStack/MultiTableLambda/Resource",
-    "aws:asset:path": "asset.3aeaa7f259d83bc5c978251f461be95a9017ba8344a15d1f63992ccec0928082",
+    "aws:asset:path": "asset.5d5d53c3a913262eebe9bf75facc87c5fd882e2369942875b8e0f5c62fdaa7dd",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -305,7 +305,7 @@
     "aws:cdk:path": "MultiTableApiStack/MultiTableAPI/Account"
    }
   },
-  "MultiTableAPIDeployment6F7D6661e9fbb0cf5fef600c10f19863261bacd1": {
+  "MultiTableAPIDeployment6F7D666159c80164e6b788928065d691dd2e3b15": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "Description": "Automatically created by the RestApi construct",
@@ -318,7 +318,6 @@
     "MultiTableAPImedicationsB271FFB1",
     "MultiTableAPImedicationSchedulesidPUT9BC25065",
     "MultiTableAPImedicationSchedulesidDF13660D",
-    "MultiTableAPImedicationSchedulesOPTIONS51E393BF",
     "MultiTableAPImedicationSchedulesPOST96D260DC",
     "MultiTableAPImedicationSchedules5AAA52CC",
     "MultiTableAPIpatientsidGETF81FD9DC",
@@ -335,7 +334,7 @@
    "Type": "AWS::ApiGateway::Stage",
    "Properties": {
     "DeploymentId": {
-     "Ref": "MultiTableAPIDeployment6F7D6661e9fbb0cf5fef600c10f19863261bacd1"
+     "Ref": "MultiTableAPIDeployment6F7D666159c80164e6b788928065d691dd2e3b15"
     },
     "RestApiId": {
      "Ref": "MultiTableAPI16F2ED86"
@@ -924,49 +923,6 @@
    },
    "Metadata": {
     "aws:cdk:path": "MultiTableApiStack/MultiTableAPI/Default/medicationSchedules/POST/Resource"
-   }
-  },
-  "MultiTableAPImedicationSchedulesOPTIONS51E393BF": {
-   "Type": "AWS::ApiGateway::Method",
-   "Properties": {
-    "AuthorizationType": "NONE",
-    "HttpMethod": "OPTIONS",
-    "Integration": {
-     "IntegrationResponses": [
-      {
-       "ResponseParameters": {
-        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-        "method.response.header.Access-Control-Allow-Origin": "'*'",
-        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'"
-       },
-       "StatusCode": "200"
-      }
-     ],
-     "PassthroughBehavior": "NEVER",
-     "RequestTemplates": {
-      "application/json": "{\"statusCode\":200}"
-     },
-     "Type": "MOCK"
-    },
-    "MethodResponses": [
-     {
-      "ResponseParameters": {
-       "method.response.header.Access-Control-Allow-Headers": true,
-       "method.response.header.Access-Control-Allow-Methods": true,
-       "method.response.header.Access-Control-Allow-Origin": true
-      },
-      "StatusCode": "200"
-     }
-    ],
-    "ResourceId": {
-     "Ref": "MultiTableAPImedicationSchedules5AAA52CC"
-    },
-    "RestApiId": {
-     "Ref": "MultiTableAPI16F2ED86"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "MultiTableApiStack/MultiTableAPI/Default/medicationSchedules/OPTIONS/Resource"
    }
   },
   "MultiTableAPImedicationSchedulesidDF13660D": {

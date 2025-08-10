@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-// import { TableMap } from './types';
 import { respond } from './utils';
 import {
   getAllPatients,
@@ -10,13 +9,7 @@ import {
   completeMedicationSchedule
 } from './services/dynamoService';
 
-// const tableMap: TableMap = {
-//     patients: process.env.PATIENTS_TABLE!,
-//     medications: process.env.MEDICATIONS_TABLE!,
-//     medicationSchedules: process.env.MEDICATION_SCHEDULES_TABLE!,
-// };
-
-export const handleRequest = async (
+export const router = async (
   event: any
 ) => {
   console.log('Received event:', typeof event, JSON.stringify(event, null, 2));
@@ -30,10 +23,6 @@ export const handleRequest = async (
   const body: any = event.body ? JSON.parse(event.body) : null;
 
   const resource: string = path.split('/')[1];
-  // const tableName: string = tableMap[resource];
-  // if (!tableName) {
-  //     return respond(400, `Resource "${resource}" not found`);
-  // }
 
   try {
     if (resource === 'medications' && method === 'GET') {

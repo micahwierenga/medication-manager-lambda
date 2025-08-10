@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c8b79ab597a2c5d690cd398c470f4207b190e6a70935609484efbac37db477b8.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/5d85681eaaede6af09441f33c5581c89a013b84e62850f9ef0f419d64bba477d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -91,7 +91,7 @@
         "/MultiTableApiStack/MultiTableAPI/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "MultiTableAPIDeployment6F7D6661e9fbb0cf5fef600c10f19863261bacd1"
+            "data": "MultiTableAPIDeployment6F7D666159c80164e6b788928065d691dd2e3b15"
           }
         ],
         "/MultiTableApiStack/MultiTableAPI/DeploymentStage.dev/Resource": [
@@ -200,12 +200,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "MultiTableAPImedicationSchedulesPOST96D260DC"
-          }
-        ],
-        "/MultiTableApiStack/MultiTableAPI/Default/medicationSchedules/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "MultiTableAPImedicationSchedulesOPTIONS51E393BF"
           }
         ],
         "/MultiTableApiStack/MultiTableAPI/Default/medicationSchedules/{id}/Resource": [

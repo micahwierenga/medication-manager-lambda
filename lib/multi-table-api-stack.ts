@@ -34,7 +34,7 @@ export class MultiTableApiStack extends Stack {
     const apiLambda = new lambda.Function(this, 'MultiTableLambda', {
       runtime: lambda.Runtime.NODEJS_18_X,
       handler: 'index.handler',
-      code: lambda.Code.fromAsset('lambda'),
+      code: lambda.Code.fromAsset('dist/lambda'),
       timeout: Duration.seconds(10),
       environment: {
         PATIENTS_TABLE: patientsTable.tableName,
@@ -73,30 +73,6 @@ export class MultiTableApiStack extends Stack {
     const medicationSchedulesResource = api.root.addResource('medicationSchedules');
     // POST /medicationSchedules
     medicationSchedulesResource.addMethod('POST', new apigateway.LambdaIntegration(apiLambda));
-
-    // CORS OPTIONS for /medicationSchedules
-    medicationSchedulesResource.addMethod('OPTIONS', new apigateway.MockIntegration({
-        integrationResponses: [{
-          statusCode: '200',
-          responseParameters: {
-            'method.response.header.Access-Control-Allow-Headers': "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-            'method.response.header.Access-Control-Allow-Origin': "'*'",
-            'method.response.header.Access-Control-Allow-Methods': "'OPTIONS,POST'",
-          },
-        }],
-        passthroughBehavior: apigateway.PassthroughBehavior.NEVER,
-        requestTemplates: { 'application/json': '{"statusCode":200}' },
-      }), {
-        methodResponses: [{
-          statusCode: '200',
-          responseParameters: {
-            'method.response.header.Access-Control-Allow-Headers': true,
-            'method.response.header.Access-Control-Allow-Methods': true,
-            'method.response.header.Access-Control-Allow-Origin': true,
-          },
-        }],
-      }
-    );
 
     // PUT /medicationSchedules/{id}
     medicationSchedulesResource.addResource('{id}')
