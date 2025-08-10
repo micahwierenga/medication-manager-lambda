@@ -12,8 +12,6 @@ import {
 export const router = async (
   event: any
 ) => {
-  console.log('Received event:', typeof event, JSON.stringify(event, null, 2));
-
   const { method, path } = event.requestContext.http;
 
   let id: string | undefined = event.pathParameters?.id;
@@ -26,38 +24,32 @@ export const router = async (
 
   try {
     if (resource === 'medications' && method === 'GET') {
-      console.log('Fetching available medications');
       const medications = await getAvailableMedications();
-      console.log('Available medications:', medications);
+
       return respond(200, { medications });
     } else if (resource === 'patients' && method === 'GET' && !id) {
-      console.log('Fetching all patients');
       const patients = await getAllPatients();
-      console.log('All patients:', patients);
+
       return respond(200, { patients });
     } else if (resource === 'patients' && method === 'GET' && !!id) {
-      console.log('Fetching patient with ID:', id);
       const patient = await getPatientById(id);
-      console.log('Patient details:', patient);
-      console.log('Getting medication schedules with patient ID:', id);
       const schedules = await getMedicationSchedulesByPatientId(id);
-      console.log('Medication schedules:', schedules);
+
       if (patient) {
         patient.medicationSchedules = schedules;
       }
+
       return patient ? respond(200, patient) : respond(404, { error: 'Not found' });
     } else if (resource === 'medicationSchedules' && method === 'POST') {
-      console.log('Adding medication schedule');
       const schedule = { id: uuidv4(), ...body };
-      console.log('New medication schedule:', schedule);
+
       await addMedicationSchedule(schedule);
-      console.log('Medication schedule added:', schedule);
+
       return respond(201, schedule);
     } else if (resource === 'medicationSchedules' && method === 'PUT' && !!id) {
-      console.log('Toggling medication schedule status with ID:', id);
-      await toggleMedicationScheduleStatus(id);
-      console.log('Medication schedule status toggled with ID:', id);
-      return respond(204);
+      const updatedSchedule = await toggleMedicationScheduleStatus(id);
+
+      return updatedSchedule ? respond(200, updatedSchedule) : respond(404, { error: 'Not found' });
     } else {
       return respond(400, { error: 'Unsupported route or method' });
     }

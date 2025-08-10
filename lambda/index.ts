@@ -12,11 +12,9 @@ export const handler = async (
 ): Promise<APIGatewayProxyResultV2> => {
   // Lambda Function URL: event.requestContext.http.method is always present
   const method = event.requestContext?.http?.method || '';
-console.log('Received event in index.ts:', JSON.stringify(event, null, 2));
-console.log('HTTP Method:', method);
+
   // Handle CORS preflight
   if (method === 'OPTIONS') {
-    console.log('CORS preflight request');
     return {
       statusCode: 200,
       headers: CORS_HEADERS,
@@ -25,7 +23,6 @@ console.log('HTTP Method:', method);
   }
   
   try {
-    console.log('CORS non-preflight request');
     // Route to main logic
     const result = await router(event);
     // Ensure CORS headers are always present
