@@ -6,7 +6,7 @@ import {
   getAvailableMedications,
   getMedicationSchedulesByPatientId,
   addMedicationSchedule,
-  completeMedicationSchedule
+  toggleMedicationScheduleStatus
 } from './services/dynamoService';
 
 export const router = async (
@@ -54,9 +54,9 @@ export const router = async (
       console.log('Medication schedule added:', schedule);
       return respond(201, schedule);
     } else if (resource === 'medicationSchedules' && method === 'PUT' && !!id) {
-      console.log('Completing medication schedule with ID:', id);
-      await completeMedicationSchedule(id);
-      console.log('Medication schedule completed with ID:', id);
+      console.log('Toggling medication schedule status with ID:', id);
+      await toggleMedicationScheduleStatus(id);
+      console.log('Medication schedule status toggled with ID:', id);
       return respond(204);
     } else {
       return respond(400, { error: 'Unsupported route or method' });

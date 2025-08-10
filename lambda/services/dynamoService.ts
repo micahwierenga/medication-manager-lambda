@@ -1,4 +1,4 @@
-import { DynamoDB } from '@aws-sdk/client-dynamodb';
+import { DynamoDB, Update, UpdateItemOutput } from '@aws-sdk/client-dynamodb';
 import { BaseItem } from '../types';
 
 const dynamo = new DynamoDB();
@@ -73,16 +73,41 @@ export const addMedicationSchedule = async (schedule: BaseItem): Promise<void> =
     });
 }
 
-export const completeMedicationSchedule = async (id: string): Promise<void> => {
+export const toggleMedicationScheduleStatus = async (id: string): Promise<BaseItem | null> => {
     const tableName = process.env.MEDICATION_SCHEDULES_TABLE!;
+
+    // Get current completed value
+    const result = await dynamo.getItem({
+        TableName: tableName,
+        Key: { id: { S: id } },
+        ProjectionExpression: 'completed'
+    });
+    const current = result.Item?.completed?.BOOL ?? false;
+
+    // Toggle completed value
     await dynamo.updateItem({
         TableName: tableName,
-        Key: {
-            id: { S: id },
-        },
+        Key: { id: { S: id } },
         UpdateExpression: 'set completed = :completed',
         ExpressionAttributeValues: {
-            ':completed': { BOOL: true },
+            ':completed': { BOOL: !current },
         },
     });
+
+    // Fetch and return the updated item
+    const updatedResult = await dynamo.getItem({
+        TableName: tableName,
+        Key: { id: { S: id } },
+    });
+    if (!updatedResult.Item) return null;
+    // Map DynamoDB item to BaseItem shape
+    return {
+        id: updatedResult.Item.id?.S ?? '',
+        patientId: updatedResult.Item.patientId?.S ?? '',
+        medicationId: updatedResult.Item.medicationId?.S ?? '',
+        medicationName: updatedResult.Item.medicationName?.S ?? '',
+        date: updatedResult.Item.date?.S ?? '',
+        dosage: updatedResult.Item.dosage?.S ?? '',
+        completed: updatedResult.Item.completed?.BOOL ?? false,
+    };
 }
