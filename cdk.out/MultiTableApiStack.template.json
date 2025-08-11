@@ -205,7 +205,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "62ba923ad5a3ab87a68f7310fb3223e0584d7bc466e356a539809e6e72d79b2d.zip"
+     "S3Key": "8ff9721979a07cfdf14399ea854a9786cbbab3f68372d4d2dcfa0f0268f548a8.zip"
     },
     "Environment": {
      "Variables": {
@@ -217,7 +217,8 @@
       },
       "MEDICATION_SCHEDULES_TABLE": {
        "Ref": "medicationSchedules2C18EA5A"
-      }
+      },
+      "API_KEY": "xgUioasWVzPohVlMaSXSu9S8EkhLJNHk1wF3HgWt0h7IkmQyc55MDzsMZ3jUFvMi"
      }
     },
     "Handler": "index.handler",
@@ -236,7 +237,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "MultiTableApiStack/MultiTableLambda/Resource",
-    "aws:asset:path": "asset.62ba923ad5a3ab87a68f7310fb3223e0584d7bc466e356a539809e6e72d79b2d",
+    "aws:asset:path": "asset.8ff9721979a07cfdf14399ea854a9786cbbab3f68372d4d2dcfa0f0268f548a8",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
