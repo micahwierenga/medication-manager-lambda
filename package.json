@@ -10,7 +10,7 @@
     "synth": "cdk synth",
     "deploy": "cdk deploy",
     "destroy": "cdk destroy",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "jest"
   },
   "dependencies": {
     "aws-cdk-lib": "^2.0.0",
@@ -18,9 +18,14 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.0.0",
+    "@aws-sdk/client-dynamodb": "^3.864.0",
+    "@types/aws-lambda": "^8.10.0",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20.0.0",
     "@types/uuid": "^9.0.0",
-    "@types/aws-lambda": "^8.10.0"
+    "aws-sdk-client-mock": "^4.1.0",
+    "jest": "^30.0.5",
+    "ts-jest": "^29.4.1",
+    "typescript": "^5.0.0"
   }
 }

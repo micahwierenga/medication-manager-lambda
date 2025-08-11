@@ -10,19 +10,14 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": ["node", "aws-lambda", "jest"],
-    "allowSyntheticDefaultImports": true,
-    "noEmitHelpers": false,
-    "importHelpers": false
+    "types": ["node", "aws-lambda", "jest"]
   },
   "include": [
-    "bin/**/*.ts",
-    "lib/**/*.ts",
-    "lambda/**/*.ts"
+    "services/**/*.ts",
+    "__tests__/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "cdk.out",
     "dist"
   ]
 }

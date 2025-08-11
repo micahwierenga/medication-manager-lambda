@@ -205,7 +205,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "1006ac17062bcc1799123c7b3c3bd66d24fac0f8ef829065d58a16f71e41c3a4.zip"
+     "S3Key": "62ba923ad5a3ab87a68f7310fb3223e0584d7bc466e356a539809e6e72d79b2d.zip"
     },
     "Environment": {
      "Variables": {
@@ -236,7 +236,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "MultiTableApiStack/MultiTableLambda/Resource",
-    "aws:asset:path": "asset.1006ac17062bcc1799123c7b3c3bd66d24fac0f8ef829065d58a16f71e41c3a4",
+    "aws:asset:path": "asset.62ba923ad5a3ab87a68f7310fb3223e0584d7bc466e356a539809e6e72d79b2d",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }

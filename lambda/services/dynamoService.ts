@@ -1,11 +1,14 @@
-import { DynamoDB, Update, UpdateItemOutput } from '@aws-sdk/client-dynamodb';
+import { DynamoDB, ScanCommand } from '@aws-sdk/client-dynamodb';
 import { BaseItem } from '../types';
 
 const dynamo = new DynamoDB();
 
 export const getAllPatients = async (): Promise<BaseItem[]> => {
     const tableName = process.env.PATIENTS_TABLE!;
-    const result = await dynamo.scan({ TableName: tableName });
+    console.log('Fetching all patients from table:', tableName);
+    // const result = await dynamo.scan({ TableName: tableName });
+    const result = await dynamo.send(new ScanCommand({ TableName: tableName }));
+    console.log('Scan result:', JSON.stringify(result, null, 2));
     return result.Items ? result.Items.map(item => ({
         id: item.id.S ?? '',
         firstName: item.firstName.S ?? '',
