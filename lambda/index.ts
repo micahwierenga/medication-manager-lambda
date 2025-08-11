@@ -1,6 +1,8 @@
 import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from 'aws-lambda';
 import { router } from './router';
 
+const API_KEY = process.env.API_KEY;
+
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
@@ -12,6 +14,17 @@ export const handler = async (
 ): Promise<APIGatewayProxyResultV2> => {
   // Lambda Function URL: event.requestContext.http.method is always present
   const method = event.requestContext?.http?.method || '';
+
+  if (method !== 'OPTIONS') {
+    const apiKey = event.headers?.['x-api-key'];
+    if (apiKey !== API_KEY) {
+      return {
+        statusCode: 401,
+        headers: CORS_HEADERS,
+        body: JSON.stringify({ message: 'Unauthorized' }),
+      };
+    }
+  }
 
   // Handle CORS preflight
   if (method === 'OPTIONS') {
