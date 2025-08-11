@@ -40,7 +40,7 @@ export class MultiTableApiStack extends Stack {
         PATIENTS_TABLE: patientsTable.tableName,
         MEDICATIONS_TABLE: medicationsTable.tableName,
         MEDICATION_SCHEDULES_TABLE: medicationSchedulesTable.tableName,
-        API_KEY: 'xgUioasWVzPohVlMaSXSu9S8EkhLJNHk1wF3HgWt0h7IkmQyc55MDzsMZ3jUFvMi', // Set your API key here
+        API_KEY: '', // Set your API key here
       }
     });
 
